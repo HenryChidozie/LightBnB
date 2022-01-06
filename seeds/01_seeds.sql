@@ -16,17 +16,17 @@ INSERT INTO properties (owner_id, title, description, thumbnail_photo_url, cover
 (4, 'Micro Wave', 'description', 'https://images.com', 'http://pages.com', 7000, 8, 11, 5, 'Canada', '123 wang Street', 'ST John', 'NFL', 'Y1B 2G7', TRUE),
 (5, 'speed lamp', 'description', 'https://images.com', 'http://pages.com', 3000, 20, 10, 11, 'Canada', '123 Yonge Street', 'Toronto', 'ON', 'A1B 2C3', TRUE),
 (6, 'Mad Dog', 'description', 'https://images.com', 'http://pages.com', 8700, 10, 4, 8, 'Canada', '123 Bond Street', 'Regina', 'SK', 'G1B 4C0', TRUE),
-(2, 'Fume Jei', 'description', 'https://images.com', 'http://pages.com', 10400, 9, 4, 18, 'Canada', '123 Laid Street', 'Guelph', 'ON', 'P1B 5C3', TRUE),
+(2, 'Fume Jei', 'description', 'https://images.com', 'http://pages.com', 10400, 9, 4, 18, 'Canada', '123 Laid Street', 'Guelph', 'ON', 'P1B 5C3', TRUE);
 
 
 INSERT INTO reservations (guest_id, property_id, start_date, end_date) VALUES 
-(3, 2, '2020-01-01', '2020-01-10'),
+(3, 8, '2020-01-01', '2020-01-10'),
 (2, 2, '2015-09-13', '2015-09-30'),
 (4, 1, '2023-05-27', '2023-05-28'),
 (5, 3, '2018-09-11', '2018-09-26'),
-(8, 3, '2019-01-04', '2019-02-01'),
+(8, 6, '2019-01-04', '2019-02-01'),
 (4, 4, '2021-10-01', '2021-10-14'),
-(1, 5, '2014-10-21', '2014-10-21'),
+(1, 5, '2014-10-21', '2014-10-21');
 
 
 INSERT INTO property_reviews (guest_id, property_id, reservation_id, rating, message) VALUES 
