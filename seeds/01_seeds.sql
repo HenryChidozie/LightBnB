@@ -10,7 +10,7 @@ INSERT INTO users (name, email, password) VALUES
 
 
 INSERT INTO properties (owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_night, parking_spaces, number_of_bathrooms, number_of_bedrooms, country, street, city, province, post_code, active)VALUES
-(1, 'speed lamp', 'description', 'https://images.com', 'http://pages.com', 3000, 20, 10, 11, 'Canada', '123 Yonge Street', 'Toronto', 'ON', 'A1B 2C3', TRUE),
+(1, 'speed lamp', 'description', 'https://www.pexels.com/photo/brown-and-gray-painted-house-in-front-of-road-1396122/', 'http://pages.com', 3000, 20, 10, 11, 'Canada', '123 Yonge Street', 'Toronto', 'ON', 'A1B 2C3', TRUE),
 (1, 'Mad Dog', 'description', 'https://images.com', 'http://pages.com', 8700, 10, 4, 8, 'Canada', '123 Bond Street', 'Regina', 'SK', 'G1B 4C0', TRUE),
 (8, 'Fume Jei', 'description', 'https://images.com', 'http://pages.com', 10400, 9, 4, 18, 'Canada', '123 Laid Street', 'Guelph', 'ON', 'P1B 5C3', TRUE),
 (4, 'Micro Wave', 'description', 'https://images.com', 'http://pages.com', 7000, 8, 11, 5, 'Canada', '123 wang Street', 'ST John', 'NFL', 'Y1B 2G7', TRUE),

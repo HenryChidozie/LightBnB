@@ -8,7 +8,10 @@ const pool = new Pool({
   password: 'labber',
   host: 'localhost',
   database: 'lightbnb',
-  port: 3000
+});
+
+pool.connect(() => {
+  console.log('Connected to the database');
 });
 
 
@@ -22,18 +25,18 @@ const pool = new Pool({
 const getUserWithEmail = function(email) {
   return new Promise((resolve, reject) => {
     pool
-      .query(`SELECT * FROM users WHERE email LIKE $1;`, [email.toLowerCase()])
+      .query(`SELECT * FROM users WHERE email LIKE $1;`, [email.toLowerCase])
       .then((result) => {
-        if(result && result.rowCount) {
-          resolve(result.rows[0])
+        if (result && result.rowCount) {
+          resolve(result.rows[0]);
         }
         resolve(null);
-      });
+      })
       .catch((error) => {
         reject(error);
-    })
+      });
   });
-}
+};
 exports.getUserWithEmail = getUserWithEmail;
 
 /**
@@ -42,7 +45,19 @@ exports.getUserWithEmail = getUserWithEmail;
  * @return {Promise<{}>} A promise to the user.
  */
 const getUserWithId = function(id) {
-  return Promise.resolve(users[id]);
+  return new Promise((resolve, reject) => {
+    pool
+      .query(`SELECT * FROM users WHERE id=$1;`, [id])
+      .then((result) => {
+        if (result && result.rowCount) {
+          resolve(result.rows[0]);
+        }
+        resolve(null);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
 };
 exports.getUserWithId = getUserWithId;
 
@@ -53,11 +68,19 @@ exports.getUserWithId = getUserWithId;
  * @return {Promise<{}>} A promise to the user.
  */
 const addUser =  function(user) {
-  const userId = Object.keys(users).length + 1;
-  user.id = userId;
-  users[userId] = user;
-  return Promise.resolve(user);
-};
+  return new Promise((resolve, reject) => {
+    pool
+      .query(`INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *;`, [user.name, user.email, user.password])
+      .then((result) => {
+        if (result && result.rowCount) {
+          resolve(result.rows[0]);
+        }
+        resolve(null);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
 exports.addUser = addUser;
 
 /// Reservations
@@ -82,10 +105,10 @@ exports.getAllReservations = getAllReservations;
  */
 const getAllProperties = (options, limit = 10) => {
   return pool
-    .query(`SELECT * FROM properties LIMIT $1;`, [limit])
+    .query(`SELECT * FROM properties LIMIT $1`, [limit])
     .then((result) => result.rows)
     .catch((err) => {
-      console.error(err.message);
+      console.log(err.message);
     });
 };
 exports.getAllProperties = getAllProperties;
